@@ -245,7 +245,7 @@ public class Test
 			  
 			  if(flag)
 			  {
-				  com.szkingdom.Import_Data.importDate(zqgsdm, sjrq, check_rtn);
+				  Import_Data.importDate(zqgsdm, sjrq, check_rtn);
 			  }
 		   
 				 

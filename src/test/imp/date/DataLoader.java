@@ -23,7 +23,7 @@ import test.imp.date.DataLoadConstants.ParamName;
 public class DataLoader {
 	static Logger logger = Logger.getLogger(DataLoader.class);
 	//任务队列
-	ConcurrentLinkedQueue<Map.Entry<String, List<File>>> taskQueus = new ConcurrentLinkedQueue<Map.Entry<String,List<File>>>();
+	ConcurrentLinkedQueue<Entry<String, List<File>>> taskQueus = new ConcurrentLinkedQueue<Entry<String,List<File>>>();
 	
 	public void loadDate(InsertTye it, String user, String pwd, String domain, Map<String, List<File>> insFiles, String logPath, Map<String, Integer> params) throws Exception{
 		if(insFiles != null && insFiles.keySet() != null && insFiles.keySet().size() != 0){
@@ -42,7 +42,7 @@ public class DataLoader {
 			logPath = logPath + File.separator;
 			
 			cmd +=  " skip=1 rows="+rows+"  bindsize="+binds + " readsize="+readsize + " date_cache="+date_cache ;
-			for(Map.Entry<String, List<File>> entry : treemap.entrySet()){
+			for(Entry<String, List<File>> entry : treemap.entrySet()){
 				taskQueus.offer(entry);
 			}
 			treemap.clear();
@@ -168,7 +168,7 @@ class StreamGobbler extends Thread {
 class NormalCmdRunner implements Runnable{
 	static Logger logger = Logger.getLogger(NormalCmdRunner.class);
 	//需要导入的数据对应的文件
-	private final ConcurrentLinkedQueue<Map.Entry<String, List<File>>> taskQueus;
+	private final ConcurrentLinkedQueue<Entry<String, List<File>>> taskQueus;
 	private final String logPath;
 	private final String cmdPrefix;
 	private final AtomicInteger totalDataCount;
@@ -214,7 +214,7 @@ class NormalCmdRunner implements Runnable{
 class DirectCmdRunner implements Runnable{
 	static Logger logger = Logger.getLogger(NormalCmdRunner.class);
 	//需要导入的数据对应的文件
-	private final ConcurrentLinkedQueue<Map.Entry<String, List<File>>> taskQueus;
+	private final ConcurrentLinkedQueue<Entry<String, List<File>>> taskQueus;
 	private final String logPath;
 	private final String cmdPrefix;
 	private final AtomicInteger totalDataCount;
@@ -254,7 +254,7 @@ class DirectCmdRunner implements Runnable{
 class ExternalCmdRunner implements Runnable{
 	static Logger logger = Logger.getLogger(NormalCmdRunner.class);
 	//需要导入的数据对应的文件
-	private final ConcurrentLinkedQueue<Map.Entry<String, List<File>>> taskQueus;
+	private final ConcurrentLinkedQueue<Entry<String, List<File>>> taskQueus;
 	private final String logPath;
 	private final String cmdPrefix;
 	private final AtomicInteger totalDataCount;

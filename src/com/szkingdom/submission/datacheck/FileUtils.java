@@ -428,7 +428,7 @@ public class FileUtils {
 			String  reportfile_path = reportfile.getPath();
 			String  receivefile_name = receivefile.getName();
 			Date   report_file_date = new Date();
-			java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyyMMddHHmmss");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 			String  nowdate = sdf.format(report_file_date);
 			
 //			System.out.println("nowdate="+nowdate);
@@ -725,7 +725,7 @@ public class FileUtils {
 		CreateFile(reportfile + zqgsdm + "/");
 
 		Date report_file_date = new Date();
-		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		File report_file = null;
 
 		try{
@@ -858,7 +858,7 @@ public class FileUtils {
 		String reportfile = dcp.getReportFileDir();
 		CreateFile(reportfile + File.separator + zqgsdm);
 		Date report_file_date = new Date();
-		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		File report_file = null;
 		try {
 
@@ -1230,7 +1230,7 @@ public class FileUtils {
 
 					Object[] params = {filename.split("_")[2], check_rtn, 99999, "02", recordcount + "|" + count + "|" + check_rtn, 
 							"02", "在文件" + filename + "中,文件头记录数不匹配,记录数为" + recordcount + ",实际为" + count + "!",
-							"2", new java.text.SimpleDateFormat("yyyyMMdd").format(new Date()), filename.split("_")[5], filename.split("_")[3]};
+							"2", new SimpleDateFormat("yyyyMMdd").format(new Date()), filename.split("_")[5], filename.split("_")[3]};
 					DataTye[] types = {DataTye.VARCHAR, DataTye.VARCHAR, DataTye.NUMBER, DataTye.VARCHAR, DataTye.VARCHAR, DataTye.VARCHAR,
 							DataTye.VARCHAR, DataTye.VARCHAR, DataTye.VARCHAR, DataTye.VARCHAR, DataTye.VARCHAR,};
 					
@@ -1246,7 +1246,7 @@ public class FileUtils {
 
 					Object[] params = {filename.split("_")[2], check_rtn, 99999, "02", recordcount + "|" + count + "|" + check_rtn, 
 							"02", "在文件" + filename + "中,文件头格式不正确!",
-							"2", new java.text.SimpleDateFormat("yyyyMMdd").format(new Date()), filename.split("_")[5], filename.split("_")[3]};
+							"2", new SimpleDateFormat("yyyyMMdd").format(new Date()), filename.split("_")[5], filename.split("_")[3]};
 					DataTye[] types = {DataTye.VARCHAR, DataTye.VARCHAR, DataTye.NUMBER, DataTye.VARCHAR, DataTye.VARCHAR, DataTye.VARCHAR,
 							DataTye.VARCHAR, DataTye.VARCHAR, DataTye.VARCHAR, DataTye.VARCHAR, DataTye.VARCHAR,};
 					

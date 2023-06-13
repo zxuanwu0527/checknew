@@ -36,8 +36,8 @@ public class DblinkTest {
 			
 			ExecutorService es = Executors.newFixedThreadPool(8);
 			Map<String, List<String>> dateMap =  ListFile(new File("E:\\successfile")); 
-			ConcurrentLinkedQueue<Entry<String, List<String>>> cq1 = new ConcurrentLinkedQueue<Map.Entry<String,List<String>>>();
-			ConcurrentLinkedQueue<Entry<String, List<String>>> cq2= new ConcurrentLinkedQueue<Map.Entry<String,List<String>>>();
+			ConcurrentLinkedQueue<Entry<String, List<String>>> cq1 = new ConcurrentLinkedQueue<Entry<String,List<String>>>();
+			ConcurrentLinkedQueue<Entry<String, List<String>>> cq2= new ConcurrentLinkedQueue<Entry<String,List<String>>>();
 			
 			cq1.addAll(dateMap.entrySet());
 			cq2.addAll(dateMap.entrySet());
