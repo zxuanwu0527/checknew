@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="gb2312" ?>
+
+<order>
+   
+	<type id="import">
+	
+	   <!--
+		<dict order="1">
+			<pro number="1" name="PROC_CHECK_FILENAME">
+			</pro>
+		
+		</dict>
+		
+		<dict order="2">
+			<pro number="1" name="PROC_CHECK_FILE_COLS">
+			   <param>cols</param>
+			   <param>rows</param>
+			</pro>
+		</dict>
+	   -->
+	   
+	   <dict order="1">
+			 <rpt_c01_temp>
+				<key>
+					<param name="p1" >m1</param>
+			    </key>
+			    <update tablename="rpt_c01" >
+				   <param name="p2" >m2</param>
+			    </update>
+			    <insert tablename="rpt_c01" >
+				   <param name="p1" >m1</param>
+				   <param name="p2" >m2</param>
+			    </insert>
+			 </rpt_c01_temp>
+		</dict>
+
+	</type>
+    
+</order>

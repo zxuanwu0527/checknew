@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	   <property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+	   <property name="jdbcUrl" value="jdbc:oracle:thin:@10.10.10.10:1521:krcs" />
+	   <property name="user" value="krcs" />
+	   <property name="password" value="krcs" />
+	   <property name="minPoolSize" value="10" />
+	   <property name="maxPoolSize" value="100"/>  
+	   <property name="initialPoolSize" value="50"/>
+	   <property name="maxIdleTime" value="25000"/>
+	   <property name="acquireIncrement" value="5"/>
+	   <property name="acquireRetryAttempts" value="50"/>
+	   <property name="acquireRetryDelay" value="1000"/>
+	   <property name="testConnectionOnCheckin" value="true"/>
+	   <property name="idleConnectionTestPeriod" value="18000"/>
+	   <property name="checkoutTimeout" value="10000"/>
+	</bean>
+	
+	<bean id="threaParam" class="com.szkingdom.submission.datacheck.ThreadParam">
+			<property name="basicCheckThreadNum" value="8"/>
+			<property name="logicCheckZqgsNum" value="4"></property>
+			<property name="procThreadNum" value="30"></property>
+	</bean>
+	
+	<bean id="dataCheckProperty" class="com.szkingdom.submission.datacheck.DataCheckProperty">
+		<property name="rootDir" value="Y:\receive\"/>
+		<property name="successFileDir" value="X:\"/>
+		<property name="failFileDir" value="D:\ZJ\failfile\"/>
+		<property name="reportFileDir" value="Y:\send\"/>
+		<property name="backupEncryptFileDir" value="D:\ZJ\copyjmfile\"/>
+		<!-- 是否在周五（数据日期）检查全量标记 -->
+		<property name="checkQOnFri" value="false"/>
+		<property name="fileEncoding" value="utf-8"/>
+		<property name="submissionFileCount" value="31"/>
+		<property name="dataNumPerInsert"  value="2000"></property>
+		<property name="stopTimeBegin" value="10"/>
+		<property name="stopTimeEnd" value="10"/>
+		<property name="decryptKeyMap" >
+			<map>
+				<entry key ="10500000" value="HLZQ_123456"></entry>
+				<entry key ="10040000" value="BHZQ_123456"></entry>
+				<entry key ="10140000" value="DTZQ_123456"></entry>
+				<entry key ="10200000" value="GDZQ_123456"></entry>
+				<entry key ="10420000" value="HLZQ_123456"></entry>
+				<entry key ="10510000" value="SJZQ_123456"></entry>
+				<entry key ="10730000" value="WKZQ_123456"></entry>
+				<entry key ="10890000" value="XNZQ_123456"></entry>
+				<entry key ="11200000" value="HXZQ_123456"></entry>
+				<entry key ="12710000" value="ZXZJ_123456"></entry>
+				<entry key ="13270000" value="ZHZQ_123456"></entry>
+				<entry key ="13310000" value="HTZQ_123456"></entry>
+				<entry key ="10230000" value="GFZQ_123456"></entry>
+				<entry key ="13320000" value="GSZQ_123456"></entry>
+				<entry key ="10050000" value="CCZQ_123456"></entry>
+				<entry key ="10150000" value="DBZQ_123456"></entry>
+				<entry key ="10240000" value="GHZQ_123456"></entry>
+				<entry key ="10270000" value="GTJA_123456"></entry>
+				<entry key ="10610000" value="NJZQ_123456"></entry>
+				<entry key ="10760000" value="SCZQ_123456"></entry>
+				<entry key ="10910000" value="XCZQ_123456"></entry>
+				<entry key ="11300000" value="KYZQ_123456"></entry>
+				<entry key ="12970000" value="RXZQ_123456"></entry>
+				<entry key ="13260000" value="JYZQ_123456"></entry>
+				<entry key ="13730000" value="DXZQ_123456"></entry>
+				<entry key ="10160000" value="DFZQ_123456"></entry>
+				<entry key ="10250000" value="GZZQ_123456"></entry>
+				<entry key ="10470000" value="MSZQ_123456"></entry>
+				<entry key ="10620000" value="PAZQ_123456"></entry>
+				<entry key ="10780000" value="TFZQ_123456"></entry>
+				<entry key ="10940000" value="XYZQ_123456"></entry>
+				<entry key ="11100000" value="DTZQ_123456"></entry>
+				<entry key ="11380000" value="WLZQ_123456"></entry> 
+				<entry key ="10280000" value="ZSZQ_123456"></entry>
+				<entry key ="11020000" value="ZXZQ_123456"></entry>
+				<entry key ="13370000" value="ZYZQ_123456"></entry>
+				<entry key ="10080000" value="DHZQ_123456"></entry>
+				<entry key ="10830000" value="YDZQ_123456"></entry>
+				<entry key ="11080000" value="CCZQ_123456"></entry>
+				<entry key ="13480000" value="TPYZQ_123456"></entry>
+         	</map>
+		</property>
+		<!-- 处理交互日志信息 -->
+		<property name="jhjgSql" value="insert into rzrq.T_SJZX_RZRQ_JKSJ_JHJG(SJRQ,ZQGSDM,JYRQ,CHECK_RTN,JYJG,TZBZ,sfsb)  values(?,?,?,?,?,?,?)"/>
+	</bean>
+	
+	<bean id="dao" class="com.szkingdom.submission.datacheck.DbOperImpl">
+	</bean>
+	<bean id="cmdRunner" class="com.szkingdom.submission.datacheck.CmdRunner">
+	</bean>
+	<bean id="procDao" class="com.szkingdom.submission.datacheck.DbOperImplWrapper">
+	</bean>
+	<bean id="checkservice" class="com.szkingdom.submission.datacheck.CheckService">
+	</bean>
+</beans>
